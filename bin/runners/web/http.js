@@ -2,8 +2,10 @@ var app = require('../../../servers/http');
 var debug = require('debug')('exprs:server');
 var http = require('http');
 
+const { httpPort } = require('./../../../config/').server;
+
 const run = () => {
-   var port = normalizePort(process.env.PORT || '80');
+   var port = httpPort;
    app.set('port', port);
 
    /**
@@ -19,26 +21,6 @@ const run = () => {
    server.listen(port);
    server.on('error', onError);
    server.on('listening', onListening);
-
-   /**
-    * Normalize a port into a number, string, or false.
-    */
-
-   function normalizePort(val) {
-   var port = parseInt(val, 10);
-
-   if (isNaN(port)) {
-   // named pipe
-   return val;
-   }
-
-   if (port >= 0) {
-   // port number
-   return port;
-   }
-
-   return false;
-   }
 
    /**
     * Event listener for HTTP server "error" event.
