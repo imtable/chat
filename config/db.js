@@ -1,5 +1,5 @@
 module.exports = {
-  uri: 'mongodb+srv://admin:admin@imtablefreecluster.asr7n.mongodb.net/myFirstDatabase?authSource=admin&replicaSet=atlas-z4onxb-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true',
+  uri: 'mongodb+srv://imtable:adaD1324@petprojectscluster.khgowa0.mongodb.net/?retryWrites=true&w=majority&appName=petProjectsCluster',
   options: {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -7,5 +7,3 @@ module.exports = {
     useFindAndModify: false
   },
 };
-
-// 'mongodb+srv://admin:123123Qq@imtablefreecluster.asr7n.mongodb.net/chat'
