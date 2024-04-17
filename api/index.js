@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var MongoStore = require('connect-mongo');
+require('dotenv').config()
 
 var indexRouter = require('../routes/index');
 var usersRouter = require('../routes/users');
@@ -46,12 +47,10 @@ const runSockets = (server) => {
    });
 };
 
-const { httpPort } = require('../config/').server;
+const httpPort = process.env.PORT;
 
 const runHttp = () => {
     var port = httpPort;
-//   !!!!!!!!!!!!!!! PORT PORT  !!!!!!!!!!!!!!! PORT PORT  !!!!!!!!!!!!!!! PORT PORT
-//   var port = '8080';
    app.set('port', port);
 
    /**
@@ -114,13 +113,17 @@ const runHttp = () => {
 const db = require('../storage/db');
 
 // const { dbUri, options } = require('../config/db');
-const dbUri = 'mongodb+srv://imtable:adaD1324@petprojectscluster.khgowa0.mongodb.net/?retryWrites=true&w=majority&appName=petProjectsCluster';
+// const dbUri = 'mongodb+srv://imtable:adaD1324@petprojectscluster.khgowa0.mongodb.net/?retryWrites=true&w=majority&appName=petProjectsCluster';
+// mongodb+srv://imtable:adaD1324@petprojectscluster.khgowa0.mongodb.net/?retryWrites=true&w=majority&appName=petProjectsCluster
 //   const options = {
-//    //  useNewUrlParser: true,
-//    //  useUnifiedTopology: true,
-//    //  useCreateIndex: false,
-//    //  useFindAndModify: false
-//   }
+   //    //  useNewUrlParser: true,
+   //    //  useUnifiedTopology: true,
+   //    //  useCreateIndex: false,
+   //    //  useFindAndModify: false
+   //   }
+
+// const dbUri = 'mongodb+srv://imtable:adaD1324@petprojectscluster.khgowa0.mongodb.net/?retryWrites=true&w=majority&appName=petProjectsCluster';
+   const dbUri = process.env.MONGODB_URI;
 
 const dbRunner = () => new Promise((resolve, reject) => {
    mongoose.connect(dbUri);

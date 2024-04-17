@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node index.js",
-    "dev": "node ./bin/www",
+    "start": "set NODE_ENV=dev && node ./api/index.js",
+    "dev": "set NODE_ENV=dev && node ./bin/www",
     "vercel-build": "echo hello"
   },
   "dependencies": {
@@ -13,6 +13,7 @@
     "crypto": "^1.0.1",
     "debug": "~4.3.4",
     "deep-freeze": "^0.0.1",
+    "dotenv": "^16.4.5",
     "ejs": "~3.1.10",
     "express": "~4.19.2",
     "express-session": "^1.18.0",

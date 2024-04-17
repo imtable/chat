@@ -2,7 +2,8 @@ var app = require('../../../servers/server');
 var debug = require('debug')('exprs:server');
 var http = require('http');
 
-const { httpPort } = require('./../../../config/').server;
+// const { httpPort } = require('./../../../config/').server;
+const httpPort = process.env.PORT;
 
 const run = () => {
    var port = httpPort;
