@@ -115,15 +115,15 @@ const db = require('../storage/db');
 
 // const { dbUri, options } = require('../config/db');
 const dbUri = 'mongodb+srv://imtable:adaD1324@petprojectscluster.khgowa0.mongodb.net/?retryWrites=true&w=majority&appName=petProjectsCluster';
-  const options = {
-   //  useNewUrlParser: true,
-   //  useUnifiedTopology: true,
-   //  useCreateIndex: false,
-   //  useFindAndModify: false
-  }
+//   const options = {
+//    //  useNewUrlParser: true,
+//    //  useUnifiedTopology: true,
+//    //  useCreateIndex: false,
+//    //  useFindAndModify: false
+//   }
 
 const dbRunner = () => new Promise((resolve, reject) => {
-   mongoose.connect(dbUri, options);
+   mongoose.connect(dbUri);
    
    db.on('error', (err) => {
       console.log('DB err');
