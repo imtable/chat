@@ -1,5 +1,6 @@
 console.log('start');
 const socket = io();
+console.log(io())
 
 const USER = { name: '' }
 

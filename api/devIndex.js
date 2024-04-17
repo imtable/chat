@@ -22,31 +22,7 @@ app.set('view engine', 'ejs');
 var debug = require('debug')('exprs:server');
 var http = require('http');
 
-const sio = require('socket.io');
-
-const runSockets = (server) => {
-   const io = sio(server);
-
-   io.on('connection', (socket) => {
-      console.log(`Connection ID: ${socket.id}`);
-      
-      socket.on('msgReq', (data, cb) => {
-         console.log(data);
-         // cb('msg received');
-         io.emit('msgRes', {userName: data.userName, msg: data.msg});
-      });
-
-      socket.on('typingReq', (data) => {
-         io.emit('typingRes', data );
-      });
-
-      socket.on('disconnect', () => {
-         console.log(`Disconnection ID: ${socket.id}`);
-      });
-   });
-};
-
-const { httpPort } = require('../config/').server;
+const { httpPort } = require('../config').server;
 
 const runHttp = () => {
     var port = httpPort;
@@ -110,6 +86,30 @@ const runHttp = () => {
    return server;
 };
 
+  const sio = require('socket.io');
+
+const runSockets = (server) => {
+   const io = sio(server);
+
+   io.on('connection', (socket) => {
+      console.log(`Connection ID: ${socket.id}`);
+      
+      socket.on('msgReq', (data, cb) => {
+         console.log(data);
+         // cb('msg received');
+         io.emit('msgRes', {userName: data.userName, msg: data.msg});
+      });
+
+      socket.on('typingReq', (data) => {
+         io.emit('typingRes', data );
+      });
+
+      socket.on('disconnect', () => {
+         console.log(`Disconnection ID: ${socket.id}`);
+      });
+   });
+};
+
   const mongoose = require('mongoose');
 const db = require('../storage/db');
 
@@ -145,12 +145,12 @@ const dbRunner = () => new Promise((resolve, reject) => {
 const run = () => new Promise(async (resolve, reject) => {
 // const run = async () => {
    await dbRunner();
-   const server = runHttp();
-   await runSockets(server);
+   await runHttp();
+   await runSockets();
 // }
 })
 
-run()
+// run()
 // ************************** MLG PRO ELITE CODE **********************
 
 app.use(logger('dev'));

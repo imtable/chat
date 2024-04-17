@@ -6,13 +6,13 @@ var logger = require('morgan');
 var session = require('express-session');
 var MongoStore = require('connect-mongo');
 
-var indexRouter = require('../routes/index');
-var usersRouter = require('../routes/users');
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
 
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, '../views'));
+app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 
 // ************************** MLG PRO ELITE CODE **********************
@@ -46,7 +46,7 @@ const runSockets = (server) => {
    });
 };
 
-const { httpPort } = require('../config/').server;
+const { httpPort } = require('./config/').server;
 
 const runHttp = () => {
     var port = httpPort;
@@ -111,9 +111,9 @@ const runHttp = () => {
 };
 
   const mongoose = require('mongoose');
-const db = require('../storage/db');
+const db = require('./storage/db');
 
-// const { dbUri, options } = require('../config/db');
+// const { dbUri, options } = require('./config/db');
 const dbUri = 'mongodb+srv://imtable:adaD1324@petprojectscluster.khgowa0.mongodb.net/?retryWrites=true&w=majority&appName=petProjectsCluster';
   const options = {
     useNewUrlParser: true,
@@ -157,9 +157,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, './public')));
 
-const { uri } = require('../config').db;
+const { uri } = require('./config').db;
 
 app.use(session({
   secret: 'poijklmnb',
