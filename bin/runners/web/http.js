@@ -1,6 +1,4 @@
-// var app = require('../../../servers/http');
-// Vercel require structure: /api/index.js, where index.js is "main" file (server.js)
-var app = require('../../../api/devIndex');
+var app = require('../../../servers/server');
 var debug = require('debug')('exprs:server');
 var http = require('http');
 
