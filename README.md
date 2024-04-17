@@ -1,4 +1,4 @@
-# chat
+# pet-project: online chat
 
 back: express.js (socket.io, mongoose), front: vanilla js.
 
