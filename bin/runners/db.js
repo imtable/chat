@@ -13,7 +13,9 @@ const uri = process.env.MONGODB_URI;
   }
 
 const init = () => new Promise((resolve, reject) => {
-   mongoose.connect(uri, options);
+   mongoose.connect(uri, {
+      dbName: 'chat'
+   });
    
    db.on('error', (err) => {
       console.log('DB err');
