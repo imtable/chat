@@ -6,6 +6,7 @@ require('dotenv').config()
 
 const uri = process.env.MONGODB_URI;
   const options = {
+   dbName: 'chat',
     // useNewUrlParser: true,
     // useUnifiedTopology: true,
     // useCreateIndex: false,
@@ -13,9 +14,7 @@ const uri = process.env.MONGODB_URI;
   }
 
 const init = () => new Promise((resolve, reject) => {
-   mongoose.connect(uri, {
-      dbName: 'chat'
-   });
+   mongoose.connect(uri, options);
    
    db.on('error', (err) => {
       console.log('DB err');
