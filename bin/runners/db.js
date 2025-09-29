@@ -6,7 +6,6 @@ require('dotenv').config()
 
 const uri = process.env.MONGODB_URI;
   const options = {
-   dbName: 'chat',
     // useNewUrlParser: true,
     // useUnifiedTopology: true,
     // useCreateIndex: false,
